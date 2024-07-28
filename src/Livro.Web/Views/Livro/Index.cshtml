@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Livro.Presentation.Web.Models.LivroViewModel>
+
+<partial name="_AlertMessagePartial" />
+
+<div class="row">
+    <div class="col-lg-12 table">
+        <h3><label class="control-label ">Livros</label></h3>
+    </div>
+</div>
+<a asp-controller="Livro" asp-action="Create" class="btn btn-primary">Adicionar</a>
+<br />&nbsp;
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoPublicacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autores)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assunto.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Editora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edicao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoPublicacao)
+                </td>
+                <td>
+                    @foreach (var autor in item.Autores)
+                    {
+                        <div style="width:100%">
+                            @Html.DisplayFor(modelItem => autor.Nome)
+                        </div>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Livro" asp-action="Update" asp-route-id="@item.CodL" class="btn btn-success" style="width:100px;" >Atualizar</a><br />
+                    <a asp-controller="Livro" asp-action="Delete" asp-route-id="@item.CodL" class="btn btn-danger" style="width: 100px; margin-top: 5px; ">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+﻿@model FastReport.Web.WebReport
+
+@{
+    ViewBag.Title = "Relatório";
+}
+
+<h2>Relatório</h2>
+
+@* Renderiza o componente WebReport *@
+<div>
+    @(Html.Raw(await Model.Render()))
+</div>

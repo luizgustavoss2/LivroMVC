@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Description="Simple Report">
+  <Dictionary>
+    <TableDataSource Name="viewLivros" ReferenceName="viewLivros" DataType="System.Data.DataTable, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Enabled="true">
+      <Column Name="Autor" DataType="System.String"/>
+      <Column Name="Titulo" DataType="System.String"/>
+      <Column Name="Assunto" DataType="System.String"/>
+      <Column Name="Editora" DataType="System.String"/>
+      <Column Name="Edicao" DataType="System.String"/>
+      <Column Name="Ano" DataType="System.Int32"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="818.2" Height="37.8">
+      <TextObject Name="Text1" Left="9.45" Top="9.45" Width="808.75" Height="28.35" Text="Relatório de Livros" Font="Arial, 12pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Width="818.2" Height="28.35">
+      <TextObject Name="Text2" Left="0" Top="0" Width="150" Height="56" Text="Autor" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="150" Top="0" Width="250" Height="56" Text="Titulo" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="350" Top="0" Width="150" Height="56" Text="Assunto" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="500" Top="0" Width="150" Height="56" Text="Editora" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="600" Top="0" Width="75" Height="28.35" Text="Edicao" Font="Arial, 10pt, style=Bold" HorzAlign="Right"/>
+      <TextObject Name="Text7" Left="675" Top="0" Width="75" Height="28.35" Text="Ano" Font="Arial, 10pt, style=Bold" HorzAlign="Right"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" DataSource="viewLivros" Width="718.2" Height="28.35">
+      <TextObject Name="Text8" Left="0" Top="0" Width="150" Height="28.35" Text="[viewLivros.Autor]" Font="Arial, 10pt"/>
+      <TextObject Name="Text9" Left="150" Top="0" Width="250" Height="28.35" Text="[viewLivros.Titulo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text10" Left="350" Top="0" Width="150" Height="28.35" Text="[viewLivros.Assunto]" Font="Arial, 10pt"/>
+      <TextObject Name="Text11" Left="500" Top="0" Width="150" Height="28.35" Text="[viewLivros.Editora]" Font="Arial, 10pt"/>
+      <TextObject Name="Text12" Left="600" Top="0" Width="75" Height="28.35" Text="[viewLivros.Edicao]" Font="Arial, 10pt" HorzAlign="Right"/>
+      <TextObject Name="Text13" Left="675" Top="0" Width="75" Height="28.35" Text="[viewLivros.Ano]" Font="Arial, 10pt" HorzAlign="Right"/>
+    </DataBand>
+  </ReportPage>
+</Report>
