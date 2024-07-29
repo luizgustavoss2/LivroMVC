@@ -39,7 +39,7 @@ namespace Livros.Application.UseCases
             {
                 if (ex.Message.Contains("conflicted with the REFERENCE"))
                 {
-                    response.AddNotification("Code", "Assunto não pode ser exluído. Vinculo com livros!", ErrorCode.Conflict);
+                    response.AddNotification("Code", "Assunto não pode ser excluído. Vinculo com livros!", ErrorCode.Conflict);
                     return response;
                 }
 

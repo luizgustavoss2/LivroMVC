@@ -9,37 +9,54 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .nav-item.active .nav-link {
+            font-weight: bold;
+            color: #fff; /* Ou a cor que desejar para o item ativo */
+        }
+    </style>
 
+    <script>
+        function setActive(element) {
+            // Remove a classe 'active' de todos os itens
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+            // Adiciona a classe 'active' ao item clicado
+            element.parentElement.classList.add('active');
+        }
+    </script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Livro.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Assunto" asp-action="Index">Assunto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Autor" asp-action="Index">Autor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Livro" asp-action="Index">Livro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Index">Relatório</a>
-                        </li>
-                    </ul>
-                </div>
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary text-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Livro.Web</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActive(this)">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Assunto" asp-action="Index" onclick="setActive(this)">Assunto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Autor" asp-action="Index">Autor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Livro" asp-action="Index">Livro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Report" asp-action="Index">Relatório</a>
+                    </li>
+                </ul>
             </div>
+        </div>
         </nav>
     </header>
     <div class="container">

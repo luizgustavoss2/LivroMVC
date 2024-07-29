@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Livro.Web.Controllers
 {
@@ -25,6 +26,9 @@ namespace Livro.Web.Controllers
         public IActionResult Index()
         {
             LoadViewBags();
+
+            ViewBag.DadosJson = JsonConvert.SerializeObject(GetLivros());
+
             return View();
         }
 
@@ -33,17 +37,39 @@ namespace Livro.Web.Controllers
             var requestAssunto = new AssuntoGetCommandRequest();
             var resultAssunto = _mediator.Send(requestAssunto).Result;
             ViewBag.TotalAssuntos = resultAssunto.Assunto.Count();
-                      
+
             var requestAutor = new AutorGetCommandRequest();
             var resultAutor = _mediator.Send(requestAutor).Result;
             ViewBag.TotalAutores = resultAutor.Autor.Count();
-        
+
             var requestLivros = new LivroGetCommandRequest();
             var resultLivros = _mediator.Send(requestLivros).Result;
 
             ViewBag.TotalLivros = resultLivros.Livro.Count();
         }
-            public IActionResult Privacy()
+
+        private List<LivroPorAssuntoViewModel> GetLivros()
+        {
+            var livrosPorAssunto = new List<LivroPorAssuntoViewModel>();
+            var request = new LivroGetCommandRequest();
+            var result = _mediator.Send(request).Result;
+
+            if (result.Livro != null && result.Livro.Any())
+            {
+                foreach (var livro in result.Livro.GroupBy(x => x.Assunto.Descricao).Select(group => new
+                {
+                    Assunto = group.Key,
+                    Count = group.Count()
+                }).OrderBy(x => x.Assunto))
+                {
+                    livrosPorAssunto.Add(new LivroPorAssuntoViewModel { Assunto = livro.Assunto, Quantidade = livro.Count });
+                }
+            }
+
+
+            return livrosPorAssunto;
+        }
+        public IActionResult Privacy()
         {
             return View();
         }
@@ -55,3 +81,4 @@ namespace Livro.Web.Controllers
         }
     }
 }
+

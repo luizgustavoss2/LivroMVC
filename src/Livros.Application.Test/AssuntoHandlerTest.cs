@@ -24,7 +24,7 @@ namespace Livros.Application.Test
         
         public AssuntoHandlerTest()
         {
-            _assuntoInsertCommandHandler = new UseCases.AssuntoInsertCommandHandler(_repositoryAssuntoMock.Object);
+            _assuntoInsertCommandHandler = new AssuntoInsertCommandHandler(_repositoryAssuntoMock.Object);
             _assuntoUpdateCommandHandler = new AssuntoUpdateCommandHandler(_repositoryAssuntoMock.Object);
             _assuntoGetByIdCommandHandler = new AssuntoGetByIdCommandHandler(_repositoryAssuntoMock.Object);
             _assuntoGetCommandHandler = new AssuntoGetCommandHandler(_repositoryAssuntoGenericMock.Object);
