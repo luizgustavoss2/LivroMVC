@@ -9,7 +9,7 @@ namespace Livros.Domain.Entities
         {
         }
 
-        public Livro(int? codL, string titulo, string editora, int? edicao, string anoPublicacao)
+        public Livro(int? codL, string titulo, string editora, int? edicao, int anoPublicacao)
         {
             CodL = codL;
             Titulo = titulo;
@@ -21,7 +21,7 @@ namespace Livros.Domain.Entities
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int? Edicao { get; set; }
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
 
         public virtual Assunto Assunto { get; set; }
         public virtual IEnumerable<Autor> Autor { get; set; }

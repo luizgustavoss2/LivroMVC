@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Livros.Domain.Entities;
 using Livros.Application.Notifications;
 using Livros.Domain.Interfaces.Repository;
+using System.Data.SqlClient;
 
 namespace Livros.Application.UseCases
 {
@@ -30,8 +31,20 @@ namespace Livros.Application.UseCases
                 response.AddNotification("Code", "Assunto not found!", ErrorCode.NotFound);
                 return response;
             }
+            try
+            {
+                _ = await _assuntoRepository.DeleteAsync(request.CodAs);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("conflicted with the REFERENCE"))
+                {
+                    response.AddNotification("Code", "Assunto não pode ser exluído. Vinculo com livros!", ErrorCode.Conflict);
+                    return response;
+                }
 
-            _ = await _assuntoRepository.DeleteAsync(request.CodAs);
+                response.AddNotification("Code", ex.Message);
+            }
             return response;
         }
     }

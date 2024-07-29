@@ -7,7 +7,7 @@ namespace Livros.Application.UseCases
 {
     public class LivroInsertCommandRequest : RequestBase<LivroInsertCommandRequest>, IRequest<LivroInsertCommandResponse>
     {
-        public LivroInsertCommandRequest(string titulo, string editora, int? edicao, string anoPublicacao, int codAs, List<int> listCodAu)
+        public LivroInsertCommandRequest(string titulo, string editora, int? edicao, int anoPublicacao, int codAs, List<int> listCodAu)
         {
             Titulo = titulo;
             Editora = editora;
@@ -21,7 +21,7 @@ namespace Livros.Application.UseCases
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int? Edicao { get; set; }
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
         public int CodAs { get; set; }
         public List<int> ListCodAu { get; set; }
         public List<LivroInsertPrecoRequest> Precos { get; set; }

@@ -11,7 +11,7 @@ namespace Livros.Application.UseCases
     public class AssuntoUpdateCommandHandler : IRequestHandler<AssuntoUpdateCommandRequest, AssuntoUpdateCommandResponse>
     {
         private readonly IRepositoryAssunto _assuntoRepository;
-        public AssuntoUpdateCommandHandler(IRepositoryAssunto assuntoRepository, IRepository<Assunto> genericRepository)
+        public AssuntoUpdateCommandHandler(IRepositoryAssunto assuntoRepository)
         {
             _assuntoRepository = assuntoRepository;
         }

@@ -94,3 +94,26 @@ ALTER TABLE [dbo].[Preco]  WITH CHECK ADD FOREIGN KEY([Livro_CodL])
 REFERENCES [dbo].[Livro] ([CodL])
 GO
 
+CREATE VIEW [viewLivros] AS
+SELECT 
+	   au.Nome as Autor,
+       l.CodL as Codigo,
+	   l.Titulo,
+	   a.Descricao as Assunto,
+	   l.Editora,
+	   l.Edicao,
+	   l.AnoPublicacao as Ano	   
+FROM Autor au
+inner join Livro_Autor lau on au.CodAu = lau.Autor_CodAu
+inner join Livro l on lau.Livro_CodL = l.CodL
+Left join Livro_Assunto la on l.CodL =la.Livro_CodL
+Left join Assunto a on la.Assunto_CodAs = a.CodAs
+group by au.Nome, l.CodL,
+	   l.Titulo,
+	   a.Descricao,
+	   l.Editora,
+	   l.Edicao,
+	   l.AnoPublicacao;
+	   
+
+	   

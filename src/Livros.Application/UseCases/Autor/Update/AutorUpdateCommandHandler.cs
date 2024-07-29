@@ -11,7 +11,7 @@ namespace Livros.Application.UseCases
     public class AutorUpdateCommandHandler : IRequestHandler<AutorUpdateCommandRequest, AutorUpdateCommandResponse>
     {
         private readonly IRepositoryAutor _autorRepository;
-        public AutorUpdateCommandHandler(IRepositoryAutor autorRepository, IRepository<Autor> genericRepository)
+        public AutorUpdateCommandHandler(IRepositoryAutor autorRepository)
         {
             _autorRepository = autorRepository;
         }

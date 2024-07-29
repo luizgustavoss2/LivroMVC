@@ -7,7 +7,7 @@ namespace Livros.Application.UseCases
 {
     public class LivroUpdateCommandRequest : RequestBase<LivroUpdateCommandRequest>, IRequest<LivroUpdateCommandResponse>
     {
-        public LivroUpdateCommandRequest(int codL, string titulo, string editora, int? edicao, string anoPublicacao, int codAs, List<int> listCodAu)
+        public LivroUpdateCommandRequest(int codL, string titulo, string editora, int? edicao, int anoPublicacao, int codAs, List<int> listCodAu)
         {
             CodL = codL;
             Titulo = titulo;
@@ -22,7 +22,7 @@ namespace Livros.Application.UseCases
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int? Edicao { get; set; }
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
         public int CodAs { get; set; }
         public List<int> ListCodAu { get; set; }
 

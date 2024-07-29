@@ -10,7 +10,7 @@ namespace Livros.Infra.Data.Entities
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int? Edicao { get; set; }
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
 
         public static implicit operator LivroPersistence(Domain.Entities.Livro livro)
         {

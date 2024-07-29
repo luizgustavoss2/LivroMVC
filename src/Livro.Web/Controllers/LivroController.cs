@@ -57,6 +57,14 @@ namespace Livro.Presentation.Web.Controllers
                         }
                     }
 
+                    if (dto.Preco != null && dto.Preco.Any())
+                    {
+                        foreach (var precoDto in dto.Preco)
+                        {
+                            livro.Precos.Add(new PrecoViewModel() { Valor = precoDto.Valor.Value, Tipo = precoDto.Tipo.Value });
+                        }
+                    }
+
                     lstLivroViewModel.Add(livro);
                 }
             }

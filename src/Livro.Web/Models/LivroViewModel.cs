@@ -26,10 +26,12 @@ namespace Livro.Presentation.Web.Models
         public int Edicao { get; set; }
 
         [Required(ErrorMessage = "O 'Ano Publicação' deve ser preenchido.")]
-        [MinLength(4, ErrorMessage = "O 'Ano Publicação' deve ter no mínimo 4 caracteres.")]
-        [MaxLength(4, ErrorMessage = "O 'Ano Publicação' deve ter no máximo 4 caracteres.")]
+        //[MinLength(4, ErrorMessage = "O 'Ano Publicação' deve ter no mínimo 4 caracteres.")]
+        //[MaxLength(4, ErrorMessage = "O 'Ano Publicação' deve ter no máximo 4 caracteres.")]
+        
+        [Range(1000, 2099, ErrorMessage = "Ano deve ser um número de 4 dígitos entre 1900 e 2099")]
         [DisplayName("Ano Publicação")]
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
 
         [DisplayName("Assunto")]
         public AssuntoViewModel Assunto { get; set; }

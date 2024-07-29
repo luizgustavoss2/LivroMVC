@@ -112,6 +112,13 @@ namespace Livro.Presentation.Web.Controllers
             {
                 var request = new AssuntoDeleteCommandRequest(codAs: id);
                 var result = _mediator.Send(request).Result;
+
+                if (result.Error.HasValue)
+                {
+                    TempData[Constants.Message.ERROR] = result.Notifications[0].Message;
+                    return RedirectToAction("Index");
+                }
+
                 TempData[Constants.Message.SUCCESS] = "Assunto excluído com sucesso.";
             }
             catch (Exception ex)
