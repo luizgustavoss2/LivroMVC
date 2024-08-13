@@ -65,6 +65,7 @@
         <div class="form-group">
             <label class="control-label col-md-2"><b>Autores</b></label>
             <div class="col-md-8">
+                <div class="alert alert-danger d-none" id="errorMessageAutor">Existem autores duplicados. Por favor, escolha autores diferentes.</div>
                 <table class="table" id="autoresTable">
                     <thead>
                         <tr>
@@ -83,6 +84,7 @@
         <div class="form-group">
             <label class="control-label col-md-2"><b>Preços</b></label>
             <div class="col-md-8">
+                <div class="alert alert-danger d-none" id="errorMessage">Existem tipos duplicados. Por favor, escolha tipos diferentes.</div>
                 <table class="table" id="precosTable">
                     <thead>
                         <tr>
@@ -228,6 +230,61 @@
             $('.valorMask').on('change', function () {
                 applyMask(this);
             });
+
+            $('.form-horizontal').on('submit', function (event) {
+                event.preventDefault(); // Impede o envio do formulário imediatamente
+
+                let selectedValues = [];
+                let hasDuplicates = false;
+
+                // Loop através de todos os selects para coletar os valores selecionados
+                $('select[name^="Precos"]').each(function () {
+                    let selectedValue = $(this).val();
+                    if (selectedValues.includes(selectedValue)) {
+                        hasDuplicates = true;
+                        return false; // Saia do loop se encontrar duplicatas
+                    }
+                    selectedValues.push(selectedValue);
+                });
+
+                // Se houver duplicatas, mostre a mensagem de erro
+                if (hasDuplicates) {
+                    $('#errorMessage').removeClass('d-none'); // Mostra a mensagem de erro
+                } else {
+                    $('#errorMessage').addClass('d-none'); // Esconde a mensagem de erro, se não houver duplicatas
+                    // Caso não haja duplicatas, o formulário pode ser submetido
+                    //this.submit();
+                }
+
+                let selectedValuesAutor = [];
+                let hasDuplicatesAutor = false;
+
+                // Loop através de todos os selects para coletar os valores selecionados
+                $('select[name^="Autor"]').each(function () {
+                    let selectedValueAutor = $(this).val();
+                    if (selectedValuesAutor.includes(selectedValueAutor)) {
+                        hasDuplicatesAutor = true;
+                        return false; // Saia do loop se encontrar duplicatas
+                    }
+                    selectedValuesAutor.push(selectedValueAutor);
+                });
+
+                // Se houver duplicatas, mostre a mensagem de erro
+                if (hasDuplicatesAutor) {
+                    $('#errorMessageAutor').removeClass('d-none'); // Mostra a mensagem de erro
+                } else {
+                    $('#errorMessageAutor').addClass('d-none'); // Esconde a mensagem de erro, se não houver duplicatas
+                    // Caso não haja duplicatas, o formulário pode ser submetido
+                    //this.submit();
+                }
+
+                if (!hasDuplicates && !hasDuplicatesAutor) {
+                    this.submit();
+                }
+
+
+            });
+
         });
 
 

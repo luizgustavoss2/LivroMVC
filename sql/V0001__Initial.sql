@@ -114,6 +114,20 @@ group by au.Nome, l.CodL,
 	   l.Editora,
 	   l.Edicao,
 	   l.AnoPublicacao;
+GO
+
+insert into Assunto values('Novas tecnologias');
+
+insert into Autor values('Luiz G. saraiva');
+
+insert into Livro values('Novas Tecnologias', 'Editora nova', 1, 2024);
+
+insert into Livro_Assunto values(1,1);
+
+insert into Livro_Autor values(1,1);
+
+insert into Preco values(1, 200,1);
 	   
+
 
 	   

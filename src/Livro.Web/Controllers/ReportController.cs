@@ -42,7 +42,7 @@ public class ReportController : Controller
     private DataTable LoadDataFromView()
     {
         var dataTable = new DataTable("viewLivros");
-        string connectionString = _configuration.GetConnectionString("LivrosDatabase");
+        string connectionString = _configuration.GetConnectionString("Sql");
 
         using (var connection = new SqlConnection(connectionString))
         {
