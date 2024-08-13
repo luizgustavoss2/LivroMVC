@@ -13,4 +13,4 @@
   ENV ASPNETCORE_URLS=http://*:80
   ENV ASPNETCORE_ENVIRONMENT Prod
 
-  ENTRYPOINT ["dotnet", "Vixi.OTC.Presentation.API.dll"]
+  ENTRYPOINT ["dotnet", "Livros.Presentation.API.dll"]
