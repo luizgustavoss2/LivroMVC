@@ -9,10 +9,11 @@ using Livros.Domain.Interfaces.Repository;
 using Livros.Infra.Data.Entities;
 using Moq;
 using Xunit;
+using NUnit.Framework;
 
 namespace Livros.Application.Test
 {
-    [Trait("Assunto", "Usecases")]
+    [TestFixture]
     public class AssuntoHandlerTest
     {
         private readonly AssuntoInsertCommandHandler _assuntoInsertCommandHandler;

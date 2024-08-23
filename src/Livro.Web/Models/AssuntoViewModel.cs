@@ -13,7 +13,7 @@ namespace Livro.Presentation.Web.Models
 
         [Required(ErrorMessage = "O 'Descrição' deve ser preenchido.")]
         [MinLength(3, ErrorMessage = "O 'Descrição' deve ter no mínimo 3 caracteres.")]
-        [MaxLength(100, ErrorMessage = "O 'Descrição' deve ter no máximo 40 caracteres.")]
+        [MaxLength(20, ErrorMessage = "O 'Descrição' deve ter no máximo 20 caracteres.")]
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
     }

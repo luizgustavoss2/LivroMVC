@@ -21,7 +21,6 @@ namespace Livros.Presentation.API.UseCases.Assunto.Insert
 
         [HttpPost()]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ApiError), (int)HttpStatusCode.BadRequest)]
         [Produces("application/json")]
         public async Task<IActionResult> Post(InsertAssuntoRequest insertRequest)
         {
